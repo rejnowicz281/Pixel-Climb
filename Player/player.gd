@@ -39,10 +39,13 @@ func jump():
 	velocity.y = JUMP_VELOCITY
 
 func roll():
-	print(velocity)
 	$AnimatedSprite2D.play("Roll")
 	rolling = true
+	$Upright.disabled = true
+	$Crouch.disabled = false
 	await $AnimatedSprite2D.animation_finished
+	$Crouch.disabled = true
+	$Upright.disabled = false
 	rolling = false
 
 func player_animation():
