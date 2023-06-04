@@ -6,6 +6,7 @@ class_name AirState
 @export var ground_state: State
 @export var rolling_state: State
 @export var double_jump_velocity: float = -400.0
+@export var long_fall_height: float = 600
 
 var is_long_fall = false
 var has_double_jumped = false
@@ -21,7 +22,7 @@ func state_process(delta):
 			playback.travel("Land")
 		is_long_fall = false
 		has_double_jumped = false
-	elif character.velocity.y > 600:
+	elif character.velocity.y > long_fall_height:
 		is_long_fall = true
 	elif not has_double_jumped:
 		if character.velocity.y > 0:
