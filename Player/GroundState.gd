@@ -20,6 +20,8 @@ func state_input(event: InputEvent):
 func state_process(delta):
 	if not character.is_on_floor():
 		next_state = air_state
+	elif character.direction:
+		playback.travel("Move")
 
 func jump():
 	character.velocity.y = jump_velocity

@@ -5,6 +5,7 @@ class_name RollingState
 @export var ground_state: State
 
 func on_enter():
+	playback.travel("Roll")
 	character.get_node("UprightCollision").disabled = true
 	character.get_node("CrouchCollision").disabled = false
 	
