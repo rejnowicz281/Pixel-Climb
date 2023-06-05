@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://d3e0ebakk7y1p"]
+[gd_scene load_steps=55 format=3 uid="uid://d3e0ebakk7y1p"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0h0hi"]
 [ext_resource type="Texture2D" uid="uid://c7f1lv1taorlc" path="res://assets/Idle/Idle (Fists)/Character Idle 48x48.png" id="1_h1jfo"]
@@ -88,6 +88,10 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bfksg"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bruoo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fthki"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b8q2k"]
 "states/Air Spin/node" = SubResource("AnimationNodeAnimation_pbg88")
 "states/Air Spin/position" = Vector2(319.75, -135)
@@ -102,10 +106,10 @@ states/Land/position = Vector2(481.75, 276)
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_yddvw")
 states/Move/position = Vector2(179.75, 276)
 states/Roll/node = SubResource("AnimationNodeAnimation_nwr4n")
-states/Roll/position = Vector2(319.75, 140)
+states/Roll/position = Vector2(337.75, 392)
 states/Start/position = Vector2(-232, 276)
-transitions = ["Jump", "Jump Max", SubResource("AnimationNodeStateMachineTransition_yfiq4"), "Jump Max", "Fall", SubResource("AnimationNodeStateMachineTransition_ytiwb"), "Jump", "Air Spin", SubResource("AnimationNodeStateMachineTransition_8quw1"), "Jump Max", "Air Spin", SubResource("AnimationNodeStateMachineTransition_jixm0"), "Fall", "Air Spin", SubResource("AnimationNodeStateMachineTransition_0m5ix"), "Air Spin", "Fall", SubResource("AnimationNodeStateMachineTransition_bmkji"), "Move", "Jump", SubResource("AnimationNodeStateMachineTransition_mirrm"), "Move", "Roll", SubResource("AnimationNodeStateMachineTransition_0gdwr"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_vdkm5"), "Roll", "Move", SubResource("AnimationNodeStateMachineTransition_g6246"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_724s4"), "Land", "Move", SubResource("AnimationNodeStateMachineTransition_tw64m"), "Start", "Move", SubResource("AnimationNodeStateMachineTransition_bfksg")]
-graph_offset = Vector2(-336.636, 137.281)
+transitions = ["Jump", "Jump Max", SubResource("AnimationNodeStateMachineTransition_yfiq4"), "Jump Max", "Fall", SubResource("AnimationNodeStateMachineTransition_ytiwb"), "Jump", "Air Spin", SubResource("AnimationNodeStateMachineTransition_8quw1"), "Jump Max", "Air Spin", SubResource("AnimationNodeStateMachineTransition_jixm0"), "Fall", "Air Spin", SubResource("AnimationNodeStateMachineTransition_0m5ix"), "Air Spin", "Fall", SubResource("AnimationNodeStateMachineTransition_bmkji"), "Move", "Jump", SubResource("AnimationNodeStateMachineTransition_mirrm"), "Move", "Roll", SubResource("AnimationNodeStateMachineTransition_0gdwr"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_vdkm5"), "Roll", "Move", SubResource("AnimationNodeStateMachineTransition_g6246"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_724s4"), "Land", "Move", SubResource("AnimationNodeStateMachineTransition_tw64m"), "Start", "Move", SubResource("AnimationNodeStateMachineTransition_bfksg"), "Move", "Fall", SubResource("AnimationNodeStateMachineTransition_bruoo"), "Fall", "Move", SubResource("AnimationNodeStateMachineTransition_fthki")]
+graph_offset = Vector2(-342.636, -195.719)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_qqd0b"]
 
@@ -350,6 +354,21 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
+[sub_resource type="Animation" id="Animation_1wqwb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_8h8wa"]
 resource_name = "Roll"
 length = 0.7
@@ -469,21 +488,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_1wqwb"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iu12j"]
