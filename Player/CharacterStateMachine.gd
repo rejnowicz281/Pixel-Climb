@@ -13,6 +13,7 @@ func _ready():
 		if child is State:
 			child.character = character
 			child.playback = animation_tree["parameters/playback"]
+			child.move_group_playback = animation_tree["parameters/Move Group/playback"]
 			states.append(child)
 		else:
 			push_warning("Child " + child.name + " in CharacterStateMachine is not a State")
