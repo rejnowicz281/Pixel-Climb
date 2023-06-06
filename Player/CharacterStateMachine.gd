@@ -6,7 +6,7 @@ class_name CharacterStateMachine
 @export var animation_tree: AnimationTree
 @export var current_state : State
 
-var states: Array[State]
+var states = {}
 
 func _ready():
 	for child in get_children():
@@ -14,7 +14,7 @@ func _ready():
 			child.character = character
 			child.playback = animation_tree["parameters/playback"]
 			child.move_group_playback = animation_tree["parameters/Move Group/playback"]
-			states.append(child)
+			states[child.name] = child.get_path()
 		else:
 			push_warning("Child " + child.name + " in CharacterStateMachine is not a State")
 

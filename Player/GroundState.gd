@@ -9,7 +9,11 @@ func on_enter():
 	playback.travel("Move Group")
 
 func state_input(event: InputEvent):
-	if event.is_action_pressed("ui_up"):
+	if event.is_action_pressed("hit_yourself"):
+		character.health -= 1
+		move_group_playback.travel("End")
+		playback.travel("Take Damage")
+	elif event.is_action_pressed("ui_up"):
 		move_group_playback.travel("End")
 		playback.travel("Jump")
 		jump()

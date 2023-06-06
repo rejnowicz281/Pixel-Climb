@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://d3e0ebakk7y1p"]
+[gd_scene load_steps=106 format=3 uid="uid://d3e0ebakk7y1p"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0h0hi"]
 [ext_resource type="Texture2D" uid="uid://c7f1lv1taorlc" path="res://assets/Idle/Idle (Fists)/Character Idle 48x48.png" id="1_h1jfo"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Player/AirState.gd" id="9_uwdy0"]
 [ext_resource type="Texture2D" uid="uid://bbp6umbb7l1xv" path="res://assets/Crouching/player crouch-walk 48x48.png" id="10_a630b"]
 [ext_resource type="Script" path="res://Player/StateLabel.gd" id="11_41eu6"]
+[ext_resource type="Texture2D" uid="uid://ddu80bq2xureq" path="res://assets/Get Damage/Player Hurt 48x48.png" id="11_nkaxd"]
 [ext_resource type="Script" path="res://Player/HardLandingState.gd" id="11_w0lrt"]
 [ext_resource type="Script" path="res://Player/RollingState.gd" id="13_hpclt"]
 [ext_resource type="Script" path="res://Player/SoftLandingState.gd" id="14_6f1sh"]
@@ -93,6 +94,9 @@ graph_offset = Vector2(-387.122, 11.4033)
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nwr4n"]
 animation = &"Roll"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34uqg"]
+animation = &"Take Damage"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yfiq4"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ytiwb"]
@@ -124,6 +128,12 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sd3wo"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_waeyh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uvb42"]
+switch_mode = 2
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b8q2k"]
 "states/Air Spin/node" = SubResource("AnimationNodeAnimation_pbg88")
 "states/Air Spin/position" = Vector2(319.75, -135)
@@ -140,8 +150,10 @@ states/Land/position = Vector2(475.75, 223.281)
 states/Roll/node = SubResource("AnimationNodeAnimation_nwr4n")
 states/Roll/position = Vector2(337.75, 392)
 states/Start/position = Vector2(-158, 228.281)
-transitions = ["Jump", "Jump Max", SubResource("AnimationNodeStateMachineTransition_yfiq4"), "Jump Max", "Fall", SubResource("AnimationNodeStateMachineTransition_ytiwb"), "Jump", "Air Spin", SubResource("AnimationNodeStateMachineTransition_8quw1"), "Jump Max", "Air Spin", SubResource("AnimationNodeStateMachineTransition_jixm0"), "Fall", "Air Spin", SubResource("AnimationNodeStateMachineTransition_0m5ix"), "Air Spin", "Fall", SubResource("AnimationNodeStateMachineTransition_bmkji"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_vdkm5"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_724s4"), "Move Group", "Jump", SubResource("AnimationNodeStateMachineTransition_xuvvq"), "Land", "Move Group", SubResource("AnimationNodeStateMachineTransition_skwum"), "Roll", "Move Group", SubResource("AnimationNodeStateMachineTransition_67l43"), "Move Group", "Roll", SubResource("AnimationNodeStateMachineTransition_oat8p"), "Start", "Move Group", SubResource("AnimationNodeStateMachineTransition_sd3wo")]
-graph_offset = Vector2(-324.636, -192.719)
+"states/Take Damage/node" = SubResource("AnimationNodeAnimation_34uqg")
+"states/Take Damage/position" = Vector2(9.66638, 106.281)
+transitions = ["Jump", "Jump Max", SubResource("AnimationNodeStateMachineTransition_yfiq4"), "Jump Max", "Fall", SubResource("AnimationNodeStateMachineTransition_ytiwb"), "Jump", "Air Spin", SubResource("AnimationNodeStateMachineTransition_8quw1"), "Jump Max", "Air Spin", SubResource("AnimationNodeStateMachineTransition_jixm0"), "Fall", "Air Spin", SubResource("AnimationNodeStateMachineTransition_0m5ix"), "Air Spin", "Fall", SubResource("AnimationNodeStateMachineTransition_bmkji"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_vdkm5"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_724s4"), "Move Group", "Jump", SubResource("AnimationNodeStateMachineTransition_xuvvq"), "Land", "Move Group", SubResource("AnimationNodeStateMachineTransition_skwum"), "Roll", "Move Group", SubResource("AnimationNodeStateMachineTransition_67l43"), "Move Group", "Roll", SubResource("AnimationNodeStateMachineTransition_oat8p"), "Start", "Move Group", SubResource("AnimationNodeStateMachineTransition_sd3wo"), "Move Group", "Take Damage", SubResource("AnimationNodeStateMachineTransition_waeyh"), "Take Damage", "Move Group", SubResource("AnimationNodeStateMachineTransition_uvb42")]
+graph_offset = Vector2(-418.334, -296.719)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_qqd0b"]
 
@@ -286,6 +298,85 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_kdiby"]
+resource_name = "Crouch Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_fb48a")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_hel0e"]
+resource_name = "Crouch Walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_a630b")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_v7nuf"]
@@ -625,9 +716,9 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_kdiby"]
-resource_name = "Crouch Idle"
-loop_mode = 1
+[sub_resource type="Animation" id="Animation_ri3dv"]
+resource_name = "Take Damage"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -638,7 +729,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("9_fb48a")]
+"values": [ExtResource("11_nkaxd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -650,7 +741,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [10]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -659,49 +750,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-}
-
-[sub_resource type="Animation" id="Animation_hel0e"]
-resource_name = "Crouch Walk"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("10_a630b")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [10]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iu12j"]
@@ -717,6 +769,7 @@ _data = {
 "RESET": SubResource("Animation_1wqwb"),
 "Roll": SubResource("Animation_8h8wa"),
 "Run": SubResource("Animation_qe3tg"),
+"Take Damage": SubResource("Animation_ri3dv"),
 "Walk": SubResource("Animation_xvgbx")
 }
 
@@ -752,8 +805,8 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("9_fb48a")
-hframes = 10
+texture = ExtResource("11_nkaxd")
+hframes = 4
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
 script = ExtResource("7_nuphl")
