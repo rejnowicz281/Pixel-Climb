@@ -16,12 +16,19 @@ func state_input(event: InputEvent):
 		else:
 			playback.travel("Jump")
 			jump()
+	elif event.is_action_pressed("walk_mode"):
+		character.walk_mode = not character.walk_mode
 
 func state_process(delta):
 	if not character.is_on_floor():
 		next_state = air_state
 	elif character.direction:
-		playback.travel("Move")
+		if character.walk_mode:
+			playback.travel("Walk")
+		else:
+			playback.travel("Run")
+	else:
+		playback.travel("Idle")
 
 func jump():
 	character.velocity.y = jump_velocity

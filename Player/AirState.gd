@@ -3,7 +3,7 @@ extends State
 class_name AirState
 
 @export var hard_landing_state: State
-@export var ground_state: State
+@export var soft_landing_state: State
 @export var rolling_state: State
 @export var double_jump_velocity: float = -400.0
 @export var long_fall_height: float = 600
@@ -18,8 +18,7 @@ func state_process(delta):
 		elif is_long_fall:
 			next_state = hard_landing_state
 		elif not is_long_fall:
-			next_state = ground_state
-			playback.travel("Land")
+			next_state = soft_landing_state
 		is_long_fall = false
 		has_double_jumped = false
 	elif character.velocity.y > long_fall_height:
