@@ -36,6 +36,9 @@ func state_input(event: InputEvent):
 func state_process(delta):
 	if not character.is_on_floor():
 		next_state = air_state
+	elif character.health <= 0:
+		move_group_playback.travel("End")
+		playback.travel("Death")
 	elif character.direction:
 		if character.walk_mode:
 			move_group_playback.travel("Walk")
