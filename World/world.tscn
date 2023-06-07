@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cxkpmv5y3qx33"]
+[gd_scene load_steps=13 format=3 uid="uid://cxkpmv5y3qx33"]
 
 [ext_resource type="Texture2D" uid="uid://4xpuno7klnrm" path="res://assets/Tilemap/160x160 background tilemap.png" id="1_d7ust"]
 [ext_resource type="PackedScene" uid="uid://d3e0ebakk7y1p" path="res://Player/player.tscn" id="1_k74dw"]
 [ext_resource type="Texture2D" uid="uid://dh1r8bb6qkfhr" path="res://assets/Tilemap/Basic Tilemap.png" id="2_cxaol"]
+[ext_resource type="PackedScene" uid="uid://7qk6fxv6epht" path="res://Environment/crate.tscn" id="4_wp8sr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h8f2q"]
 texture = ExtResource("1_d7ust")
@@ -186,3 +187,6 @@ shape = SubResource("RectangleShape2D_i7x30")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
 position = Vector2(1146, 326)
 shape = SubResource("RectangleShape2D_i7x30")
+
+[node name="Crate" parent="." instance=ExtResource("4_wp8sr")]
+position = Vector2(450, 346)
