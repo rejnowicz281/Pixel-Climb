@@ -7,6 +7,7 @@ var direction = 0
 var walk_mode: bool = false
 var crouch_mode: bool = false
 var health = 10
+var sword: bool = false
 
 func _ready():
 	$AnimationTree.active = true

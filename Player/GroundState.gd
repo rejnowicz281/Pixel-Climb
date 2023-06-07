@@ -32,6 +32,19 @@ func state_input(event: InputEvent):
 	elif event.is_action_pressed("crouch_mode"):
 		character.crouch_mode = not character.crouch_mode
 		character.walk_mode = false
+	elif event.is_action_pressed("weapon_toggle"):
+		character.sword = not character.sword
+	elif event.is_action_pressed("attack"):
+		if character.sword:
+			move_group_playback.travel("End")
+			playback.travel("Sword Attack")
+		else:
+			move_group_playback.travel("End")
+			playback.travel("Punch")
+	elif event.is_action_pressed("stab"):
+		if character.sword:
+			move_group_playback.travel("End")
+			playback.travel("Sword Stab")
 
 func state_process(delta):
 	if not character.is_on_floor():
@@ -44,11 +57,15 @@ func state_process(delta):
 			move_group_playback.travel("Walk")
 		elif character.crouch_mode:
 			move_group_playback.travel("Crouch Walk")
+		elif character.sword:
+			move_group_playback.travel("Sword Run")
 		else:
 			move_group_playback.travel("Run")
 	else:
 		if character.crouch_mode:
 			move_group_playback.travel("Crouch Idle")
+		elif character.sword:
+			move_group_playback.travel("Sword Idle")
 		else:
 			move_group_playback.travel("Idle")
 

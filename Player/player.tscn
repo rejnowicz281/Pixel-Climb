@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://d3e0ebakk7y1p"]
+[gd_scene load_steps=125 format=3 uid="uid://d3e0ebakk7y1p"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0h0hi"]
 [ext_resource type="Texture2D" uid="uid://b6wcdtd1egbbm" path="res://assets/Player/Jumping/player air spin 48x48.png" id="2_b18yk"]
@@ -22,6 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://d3hsybga8841l" path="res://assets/Player/Pushing Objects/player push idle 48x48.png" id="14_0aoxg"]
 [ext_resource type="Script" path="res://Player/SoftLandingState.gd" id="14_6f1sh"]
 [ext_resource type="Texture2D" uid="uid://c57l861thgd47" path="res://assets/Player/Pushing Objects/Player Pull 48x48.png" id="15_5sccd"]
+[ext_resource type="Texture2D" uid="uid://cgobgfl17logq" path="res://assets/Player/Idle/Idle (Sword)/Player Sword Idle 48x48.png" id="16_ns0ld"]
+[ext_resource type="Texture2D" uid="uid://1cojm8qdlte6" path="res://assets/Player/Running/Running (Sword)/Player Sword Run 48x48.png" id="17_yfqfh"]
+[ext_resource type="Texture2D" uid="uid://d080rq1kcn3gr" path="res://assets/Player/Attacking/Attacking (Sword)/player sword atk 64x64.png" id="18_vpije"]
+[ext_resource type="Texture2D" uid="uid://bmd3nigv6td0d" path="res://assets/Player/Attacking/Attacking (Sword)/Player Sword Stab 96x48.png" id="19_1ijaa"]
+[ext_resource type="Texture2D" uid="uid://da4vl02wh6oeq" path="res://assets/Player/Attacking/Attacking (Fists)/Player Punch 64x64.png" id="20_3rgeg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efaf8"]
 size = Vector2(19, 30)
@@ -59,6 +64,12 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t8vdm"]
 animation = &"Run"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j6x7e"]
+animation = &"Sword Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6c7cy"]
+animation = &"Sword Run"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sfyfo"]
 animation = &"Walk"
 
@@ -82,21 +93,36 @@ animation = &"Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pmwjx"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xwjng"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r0one"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tii0j"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hdpmo"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x0iwc"]
 "states/Crouch Idle/node" = SubResource("AnimationNodeAnimation_uc77o")
-"states/Crouch Idle/position" = Vector2(109, 391)
+"states/Crouch Idle/position" = Vector2(-45, 391)
 "states/Crouch Walk/node" = SubResource("AnimationNodeAnimation_v1en1")
-"states/Crouch Walk/position" = Vector2(505, 391)
+"states/Crouch Walk/position" = Vector2(610, 391)
 states/End/position = Vector2(259, 588)
 states/Idle/node = SubResource("AnimationNodeAnimation_wanah")
-states/Idle/position = Vector2(-21, 391)
+states/Idle/position = Vector2(-201, 391)
 states/Run/node = SubResource("AnimationNodeAnimation_t8vdm")
-states/Run/position = Vector2(227, 391)
+states/Run/position = Vector2(81, 391)
 states/Start/position = Vector2(259, 177)
+"states/Sword Idle/node" = SubResource("AnimationNodeAnimation_j6x7e")
+"states/Sword Idle/position" = Vector2(417.878, 395.403)
+"states/Sword Run/node" = SubResource("AnimationNodeAnimation_6c7cy")
+"states/Sword Run/position" = Vector2(192.878, 391)
 states/Walk/node = SubResource("AnimationNodeAnimation_sfyfo")
-states/Walk/position = Vector2(365, 391)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_yprke"), "Start", "Crouch Idle", SubResource("AnimationNodeStateMachineTransition_50s0k"), "Start", "Run", SubResource("AnimationNodeStateMachineTransition_v5fql"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_vrxvd"), "Start", "Crouch Walk", SubResource("AnimationNodeStateMachineTransition_gst85"), "Idle", "End", SubResource("AnimationNodeStateMachineTransition_didnf"), "Crouch Idle", "End", SubResource("AnimationNodeStateMachineTransition_7146g"), "Run", "End", SubResource("AnimationNodeStateMachineTransition_1b763"), "Walk", "End", SubResource("AnimationNodeStateMachineTransition_41evv"), "Crouch Walk", "End", SubResource("AnimationNodeStateMachineTransition_pmwjx")]
-graph_offset = Vector2(-387.122, 11.4033)
+states/Walk/position = Vector2(306, 391)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_yprke"), "Start", "Crouch Idle", SubResource("AnimationNodeStateMachineTransition_50s0k"), "Start", "Run", SubResource("AnimationNodeStateMachineTransition_v5fql"), "Start", "Walk", SubResource("AnimationNodeStateMachineTransition_vrxvd"), "Start", "Crouch Walk", SubResource("AnimationNodeStateMachineTransition_gst85"), "Idle", "End", SubResource("AnimationNodeStateMachineTransition_didnf"), "Crouch Idle", "End", SubResource("AnimationNodeStateMachineTransition_7146g"), "Run", "End", SubResource("AnimationNodeStateMachineTransition_1b763"), "Walk", "End", SubResource("AnimationNodeStateMachineTransition_41evv"), "Crouch Walk", "End", SubResource("AnimationNodeStateMachineTransition_pmwjx"), "Start", "Sword Idle", SubResource("AnimationNodeStateMachineTransition_xwjng"), "Sword Idle", "End", SubResource("AnimationNodeStateMachineTransition_r0one"), "Start", "Sword Run", SubResource("AnimationNodeStateMachineTransition_tii0j"), "Sword Run", "End", SubResource("AnimationNodeStateMachineTransition_hdpmo")]
+graph_offset = Vector2(-418.122, 227.403)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bwmuu"]
+animation = &"Punch"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8nkmu"]
 animation = &"Pull"
@@ -113,6 +139,12 @@ animation = &"Push"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5n1e2"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5hiu4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1b4vd"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_88jhv"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_v5wat"]
 states/Pull/node = SubResource("AnimationNodeAnimation_8nkmu")
 states/Pull/position = Vector2(471, 289)
@@ -121,10 +153,17 @@ states/Push/position = Vector2(471, 55)
 "states/Push Idle/node" = SubResource("AnimationNodeAnimation_57meq")
 "states/Push Idle/position" = Vector2(471, 177)
 states/Start/position = Vector2(180, 157)
-transitions = ["Start", "Push", SubResource("AnimationNodeStateMachineTransition_gdvfj"), "Start", "Push Idle", SubResource("AnimationNodeStateMachineTransition_82vqd"), "Start", "Pull", SubResource("AnimationNodeStateMachineTransition_5n1e2")]
+transitions = ["Start", "Push", SubResource("AnimationNodeStateMachineTransition_gdvfj"), "Start", "Push Idle", SubResource("AnimationNodeStateMachineTransition_82vqd"), "Start", "Pull", SubResource("AnimationNodeStateMachineTransition_5n1e2"), "Push Idle", "End", SubResource("AnimationNodeStateMachineTransition_5hiu4"), "Pull", "End", SubResource("AnimationNodeStateMachineTransition_1b4vd"), "Push", "End", SubResource("AnimationNodeStateMachineTransition_88jhv")]
+graph_offset = Vector2(-103, -212)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nwr4n"]
 animation = &"Roll"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8fa1q"]
+animation = &"Sword Attack"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_47j6j"]
+animation = &"Sword Stab"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_34uqg"]
 animation = &"Take Damage"
@@ -174,17 +213,29 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ip1sb"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2ems1"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_45044"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lmbdh"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pcifj"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dylyq"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cd4re"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d6lj3"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_68grh"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ksabt"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b8q2k"]
 "states/Air Spin/node" = SubResource("AnimationNodeAnimation_pbg88")
 "states/Air Spin/position" = Vector2(319.75, -135)
 states/Death/node = SubResource("AnimationNodeAnimation_a64rq")
-states/Death/position = Vector2(-7.33362, 313.281)
+states/Death/position = Vector2(-143.334, 322.281)
 states/Fall/node = SubResource("AnimationNodeAnimation_roy6i")
 states/Fall/position = Vector2(481.75, 22)
 states/Jump/node = SubResource("AnimationNodeAnimation_cbvfl")
@@ -195,15 +246,21 @@ states/Land/node = SubResource("AnimationNodeAnimation_lcotu")
 states/Land/position = Vector2(475.75, 223.281)
 "states/Move Group/node" = SubResource("AnimationNodeStateMachine_x0iwc")
 "states/Move Group/position" = Vector2(179.75, 228.281)
+states/Punch/node = SubResource("AnimationNodeAnimation_bwmuu")
+states/Punch/position = Vector2(-61.334, -78.719)
 "states/Push Group/node" = SubResource("AnimationNodeStateMachine_v5wat")
 "states/Push Group/position" = Vector2(179.75, 365.281)
 states/Roll/node = SubResource("AnimationNodeAnimation_nwr4n")
 states/Roll/position = Vector2(337.75, 392)
-states/Start/position = Vector2(-158, 228.281)
+states/Start/position = Vector2(-338, 228.281)
+"states/Sword Attack/node" = SubResource("AnimationNodeAnimation_8fa1q")
+"states/Sword Attack/position" = Vector2(-233.334, -78.719)
+"states/Sword Stab/node" = SubResource("AnimationNodeAnimation_47j6j")
+"states/Sword Stab/position" = Vector2(78.75, -78.719)
 "states/Take Damage/node" = SubResource("AnimationNodeAnimation_34uqg")
-"states/Take Damage/position" = Vector2(-7.33362, 100)
-transitions = ["Jump", "Jump Max", SubResource("AnimationNodeStateMachineTransition_yfiq4"), "Jump Max", "Fall", SubResource("AnimationNodeStateMachineTransition_ytiwb"), "Jump", "Air Spin", SubResource("AnimationNodeStateMachineTransition_8quw1"), "Jump Max", "Air Spin", SubResource("AnimationNodeStateMachineTransition_jixm0"), "Fall", "Air Spin", SubResource("AnimationNodeStateMachineTransition_0m5ix"), "Air Spin", "Fall", SubResource("AnimationNodeStateMachineTransition_bmkji"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_vdkm5"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_724s4"), "Move Group", "Jump", SubResource("AnimationNodeStateMachineTransition_xuvvq"), "Land", "Move Group", SubResource("AnimationNodeStateMachineTransition_skwum"), "Roll", "Move Group", SubResource("AnimationNodeStateMachineTransition_67l43"), "Move Group", "Roll", SubResource("AnimationNodeStateMachineTransition_oat8p"), "Start", "Move Group", SubResource("AnimationNodeStateMachineTransition_sd3wo"), "Move Group", "Take Damage", SubResource("AnimationNodeStateMachineTransition_waeyh"), "Take Damage", "Move Group", SubResource("AnimationNodeStateMachineTransition_uvb42"), "Move Group", "Death", SubResource("AnimationNodeStateMachineTransition_xfob5"), "Death", "Move Group", SubResource("AnimationNodeStateMachineTransition_gkhs6"), "Move Group", "Push Group", SubResource("AnimationNodeStateMachineTransition_wbclm"), "Push Group", "Move Group", SubResource("AnimationNodeStateMachineTransition_ip1sb"), "Push Group/Push", "Move Group", SubResource("AnimationNodeStateMachineTransition_2ems1"), "Push Group/Push Idle", "Move Group", SubResource("AnimationNodeStateMachineTransition_lmbdh"), "Push Group/Pull", "Move Group", SubResource("AnimationNodeStateMachineTransition_dylyq")]
-graph_offset = Vector2(-464.334, 200.281)
+"states/Take Damage/position" = Vector2(-158, 131)
+transitions = ["Jump", "Jump Max", SubResource("AnimationNodeStateMachineTransition_yfiq4"), "Jump Max", "Fall", SubResource("AnimationNodeStateMachineTransition_ytiwb"), "Jump", "Air Spin", SubResource("AnimationNodeStateMachineTransition_8quw1"), "Jump Max", "Air Spin", SubResource("AnimationNodeStateMachineTransition_jixm0"), "Fall", "Air Spin", SubResource("AnimationNodeStateMachineTransition_0m5ix"), "Air Spin", "Fall", SubResource("AnimationNodeStateMachineTransition_bmkji"), "Fall", "Roll", SubResource("AnimationNodeStateMachineTransition_vdkm5"), "Fall", "Land", SubResource("AnimationNodeStateMachineTransition_724s4"), "Move Group", "Jump", SubResource("AnimationNodeStateMachineTransition_xuvvq"), "Land", "Move Group", SubResource("AnimationNodeStateMachineTransition_skwum"), "Roll", "Move Group", SubResource("AnimationNodeStateMachineTransition_67l43"), "Move Group", "Roll", SubResource("AnimationNodeStateMachineTransition_oat8p"), "Start", "Move Group", SubResource("AnimationNodeStateMachineTransition_sd3wo"), "Move Group", "Take Damage", SubResource("AnimationNodeStateMachineTransition_waeyh"), "Take Damage", "Move Group", SubResource("AnimationNodeStateMachineTransition_uvb42"), "Move Group", "Death", SubResource("AnimationNodeStateMachineTransition_xfob5"), "Death", "Move Group", SubResource("AnimationNodeStateMachineTransition_gkhs6"), "Move Group", "Push Group", SubResource("AnimationNodeStateMachineTransition_wbclm"), "Push Group", "Move Group", SubResource("AnimationNodeStateMachineTransition_ip1sb"), "Move Group", "Sword Attack", SubResource("AnimationNodeStateMachineTransition_45044"), "Move Group", "Sword Stab", SubResource("AnimationNodeStateMachineTransition_pcifj"), "Sword Attack", "Move Group", SubResource("AnimationNodeStateMachineTransition_cd4re"), "Sword Stab", "Move Group", SubResource("AnimationNodeStateMachineTransition_d6lj3"), "Punch", "Move Group", SubResource("AnimationNodeStateMachineTransition_68grh"), "Move Group", "Punch", SubResource("AnimationNodeStateMachineTransition_ksabt")]
+graph_offset = Vector2(-461.334, -147.719)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_qqd0b"]
 
@@ -868,6 +925,207 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
+[sub_resource type="Animation" id="Animation_eimdv"]
+resource_name = "Sword Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("16_ns0ld")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_j2gv7"]
+resource_name = "Sword Run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_yfqfh")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_n27hq"]
+resource_name = "Sword Attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("18_vpije")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_wfwml"]
+resource_name = "Sword Stab"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("19_1ijaa")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_lyf8p"]
+resource_name = "Punch"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("20_3rgeg")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_iu12j"]
 _data = {
 "Air Spin": SubResource("Animation_hbt8r"),
@@ -880,11 +1138,16 @@ _data = {
 "Jump Max": SubResource("Animation_tjkmb"),
 "Land": SubResource("Animation_nhjkc"),
 "Pull": SubResource("Animation_5e4t0"),
+"Punch": SubResource("Animation_lyf8p"),
 "Push": SubResource("Animation_gmmwr"),
 "Push Idle": SubResource("Animation_cnuby"),
 "RESET": SubResource("Animation_1wqwb"),
 "Roll": SubResource("Animation_8h8wa"),
 "Run": SubResource("Animation_qe3tg"),
+"Sword Attack": SubResource("Animation_n27hq"),
+"Sword Idle": SubResource("Animation_eimdv"),
+"Sword Run": SubResource("Animation_j2gv7"),
+"Sword Stab": SubResource("Animation_wfwml"),
 "Take Damage": SubResource("Animation_ri3dv"),
 "Walk": SubResource("Animation_xvgbx")
 }
@@ -916,8 +1179,8 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("13_6yol3")
-hframes = 10
+texture = ExtResource("17_yfqfh")
+hframes = 8
 
 [node name="CharacterStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "animation_tree", "current_state")]
 script = ExtResource("7_nuphl")
