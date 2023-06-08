@@ -6,6 +6,8 @@ class_name State
 var character: CharacterBody2D
 var playback: AnimationNodeStateMachinePlayback
 var move_group_playback: AnimationNodeStateMachinePlayback
+var attack_group_playback: AnimationNodeStateMachinePlayback
+var damage_group_playback: AnimationNodeStateMachinePlayback
 var next_state: State
 
 func state_input(event: InputEvent):

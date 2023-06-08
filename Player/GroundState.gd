@@ -4,6 +4,7 @@ class_name GroundState
 @export var jump_velocity: float = -400.0
 @export var air_state: State
 @export var rolling_state: State
+@export var damaged_state: State
 
 func on_enter():
 	playback.travel("Move Group")
@@ -12,7 +13,7 @@ func state_input(event: InputEvent):
 	if event.is_action_pressed("hit_yourself"):
 		character.health -= 1
 		move_group_playback.travel("End")
-		playback.travel("Take Damage")
+		next_state = damaged_state
 	elif event.is_action_pressed("ui_up"):
 		move_group_playback.travel("End")
 		playback.travel("Jump")
@@ -20,7 +21,6 @@ func state_input(event: InputEvent):
 	elif event.is_action_pressed("ui_select"):
 		if character.direction:
 			move_group_playback.travel("End")
-			playback.travel("Roll")
 			next_state = rolling_state
 		else:
 			move_group_playback.travel("End")
@@ -37,21 +37,21 @@ func state_input(event: InputEvent):
 	elif event.is_action_pressed("attack"):
 		if character.sword:
 			move_group_playback.travel("End")
-			playback.travel("Sword Attack")
+			playback.travel("Attack Group")
+			attack_group_playback.travel("Sword Attack")
 		else:
 			move_group_playback.travel("End")
-			playback.travel("Punch")
+			playback.travel("Attack Group")
+			attack_group_playback.travel("Punch")
 	elif event.is_action_pressed("stab"):
 		if character.sword:
 			move_group_playback.travel("End")
-			playback.travel("Sword Stab")
+			playback.travel("Attack Group")
+			attack_group_playback.travel("Sword Stab")
 
 func state_process(delta):
 	if not character.is_on_floor():
 		next_state = air_state
-	elif character.health <= 0:
-		move_group_playback.travel("End")
-		playback.travel("Death")
 	elif character.direction:
 		if character.walk_mode:
 			move_group_playback.travel("Walk")

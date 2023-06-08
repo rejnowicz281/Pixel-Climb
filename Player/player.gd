@@ -6,7 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction = 0
 var walk_mode: bool = false
 var crouch_mode: bool = false
-var health = 10
+var health = 3
 var sword: bool = false
 
 func _ready():

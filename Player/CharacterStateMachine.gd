@@ -14,6 +14,8 @@ func _ready():
 			child.character = character
 			child.playback = animation_tree["parameters/playback"]
 			child.move_group_playback = animation_tree["parameters/Move Group/playback"]
+			child.attack_group_playback = animation_tree["parameters/Attack Group/playback"]
+			child.damage_group_playback = animation_tree["parameters/Damage Group/playback"]
 			states[child.name] = child.get_path()
 		else:
 			push_warning("Child " + child.name + " in CharacterStateMachine is not a State")
